@@ -1,3 +1,3 @@
-# msm-queries
+# msm-gui
 
-Target: https://msm-queries.matchthetarget.com/
+Target: https://msm-gui.matchthetarget.com/
