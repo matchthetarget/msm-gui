@@ -107,7 +107,3 @@ group :test do
   gem "rspec-html-matchers"
   gem "webmock"
 end
-
-# for scraping imdb
-gem 'themoviedb-api'
-gem 'mechanize'
