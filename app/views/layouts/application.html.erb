@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Target: MSM GUI</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%#= csrf_meta_tags %>
+    <%#= csp_meta_tag %>
+    <%#= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%#= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <nav>
+      <a href="/">
+        Home
+      </a>
+    </nav>
+
+    <%= yield %>
+  </body>
+</html>
