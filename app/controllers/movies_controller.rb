@@ -42,9 +42,9 @@ class MoviesController < ApplicationController
 
     if @movie.valid?
       @movie.save
-      redirect_to("/movie_templates/#{@movie.id}", { :notice => "Movie updated successfully."} )
+      redirect_to("/movies/#{@movie.id}", { :notice => "Movie updated successfully."} )
     else
-      redirect_to("/movie_templates/#{@movie.id}", { :alert => "Movie failed to update successfully." })
+      redirect_to("/movies/#{@movie.id}", { :alert => "Movie failed to update successfully." })
     end
   end
 

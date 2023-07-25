@@ -16,6 +16,74 @@
 
 <hr>
 
+<form action="/modify_movie/<%= @movie.id %>" method="post">
+  <div>
+    <label for="title_box">
+      Title
+    </label>
+
+    <input type="text" id="title_box" name="query_title" value="<%= @movie.title %>">
+  </div>
+
+  <div>
+    <label for="year_box">
+      Year
+    </label>
+
+    <input type="text" id="year_box" name="query_year" value="<%= @movie.year %>">
+  </div>
+
+  <div>
+    <label for="duration_box">
+      Duration
+    </label>
+
+    <input type="text" id="duration_box" name="query_duration" value="<%= @movie.duration %>">
+  </div>
+
+  <div>
+    <label for="description_box">
+      Description
+    </label>
+
+    <textarea id="description_box" name="query_description" rows="3"><%= @movie.description %></textarea>
+  </div>
+
+  <div>
+    <label for="image_box">
+      Image URL
+    </label>
+
+    <input type="text" id="image_box" name="query_image" value="<%= @movie.image %>">
+  </div>
+
+  <div>
+    <label for="director_id_box">
+      Director
+    </label>
+
+    <select id="director_id_box" name="query_director_id">
+      <% Director.order({ :name => :asc }).each do |a_director| %>
+        <% if a_director.id == @movie.director_id %>
+          <option value="<%= a_director.id %>" selected>
+            <%= a_director.name %>
+          </option>
+        <% else %>
+          <option value="<%= a_director.id %>">
+            <%= a_director.name %>
+          </option>
+        <% end %>
+      <% end %>
+    </select>
+  </div>
+
+  <button>
+    Update movie
+  </button>
+</form>
+
+<hr>
+
 <dl>
   <dt>
     Title
