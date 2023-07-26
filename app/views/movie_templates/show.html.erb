@@ -59,22 +59,10 @@
 
   <div>
     <label for="director_id_box">
-      Director
+      Director ID
     </label>
 
-    <select id="director_id_box" name="query_director_id">
-      <% Director.order({ :name => :asc }).each do |a_director| %>
-        <% if a_director.id == @movie.director_id %>
-          <option value="<%= a_director.id %>" selected>
-            <%= a_director.name %>
-          </option>
-        <% else %>
-          <option value="<%= a_director.id %>">
-            <%= a_director.name %>
-          </option>
-        <% end %>
-      <% end %>
-    </select>
+    <input type="text" id="director_id_box" name="query_director_id" value="<%= @movie.director_id %>">
   </div>
 
   <button>
