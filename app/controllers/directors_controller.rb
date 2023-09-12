@@ -1,27 +1,26 @@
 class DirectorsController < ApplicationController
   def index
-    @directors = Director.all.order({ :created_at => :desc })
+    @list_of_directors = Director.all.order({ :created_at => :desc })
 
     render({ :template => "director_templates/index" })
   end
 
   def show
     the_id = params.fetch("path_id")
-    @director = Director.find(the_id)
-    @filmography = Movie.where({ :director_id => @director.id })
+    @the_director = Director.find(the_id)
 
     render({ :template => "director_templates/show" })
   end
 
   def create
-    @director = Director.new
-    @director.name = params.fetch("query_name")
-    @director.dob = params.fetch("query_dob")
-    @director.bio = params.fetch("query_bio")
-    @director.image = params.fetch("query_image")
+    @the_director = Director.new
+    @the_director.name = params.fetch("query_name")
+    @the_director.dob = params.fetch("query_dob")
+    @the_director.bio = params.fetch("query_bio")
+    @the_director.image = params.fetch("query_image")
 
-    if @director.valid?
-      @director.save
+    if @the_director.valid?
+      @the_director.save
       redirect_to("/directors", { :notice => "Director created successfully." })
     else
       redirect_to("/directors", { :notice => "Director failed to create successfully." })
@@ -30,26 +29,26 @@ class DirectorsController < ApplicationController
 
   def update
     the_id = params.fetch("path_id")
-    @director = Director.find(the_id)
+    @the_director = Director.find(the_id)
 
-    @director.name = params.fetch("query_name")
-    @director.dob = params.fetch("query_dob")
-    @director.bio = params.fetch("query_bio")
-    @director.image = params.fetch("query_image")
+    @the_director.name = params.fetch("query_name")
+    @the_director.dob = params.fetch("query_dob")
+    @the_director.bio = params.fetch("query_bio")
+    @the_director.image = params.fetch("query_image")
 
-    if @director.valid?
-      @director.save
-      redirect_to("/directors/#{@director.id}", { :notice => "Director updated successfully."} )
+    if @the_director.valid?
+      @the_director.save
+      redirect_to("/directors/#{@the_director.id}", { :notice => "Director updated successfully."} )
     else
-      redirect_to("/directors/#{@director.id}", { :alert => "Director failed to update successfully." })
+      redirect_to("/directors/#{@the_director.id}", { :alert => "Director failed to update successfully." })
     end
   end
 
   def destroy
     the_id = params.fetch("path_id")
-    @director = Director.find(the_id)
+    @the_director = Director.find(the_id)
 
-    @director.destroy
+    @the_director.destroy
 
     redirect_to("/directors", { :notice => "Director deleted successfully."} )
   end
